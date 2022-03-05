@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Build and push
-        use: docker/build-push-action@v2
+        uses: docker/build-push-action@v2
         with:
           push: true
           context: ${{ matrix.module }}
