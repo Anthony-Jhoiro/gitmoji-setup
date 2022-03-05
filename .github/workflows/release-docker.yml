@@ -18,8 +18,10 @@ jobs:
         module: ['module1', 'module2']
     
     steps:
-      - name: Get image name
-        run: echo "::set-output name=image_name::$DOCKER_HUB_LOGIN/$PREFIX_$(basename ${{ matrix.module }})"
+      - name: Get image name and tag
+        run: |
+          echo "::set-output name=image_name::$DOCKER_HUB_LOGIN/$PREFIX_$(basename ${{ matrix.module }})"
+          echo "::set-output name=tag_name::${GITHUB_REF##*/}"
         id: image_name
       
       - name: Login to DockerHub
@@ -35,4 +37,4 @@ jobs:
           context: ${{ matrix.module }}
           tags: |
             ${{ steps.image_name.outputs.image_name }}:latest
-            ${{ steps.image_name.outputs.image_name }}:${{ env.GITHUB_REF##*/ }}
+            ${{ steps.image_name.outputs.image_name }}:${{ steps.image_name.outputs.tag_name }}
