@@ -49,6 +49,12 @@ module.exports = {
             }
         ],
         '@semantic-release/github', [
+            '@semantic-release/npm',
+            {
+                npmPublish: false
+            }
+        ],
+        [
             '@semantic-release/git',
             {
                 assets: ['CHANGELOG.md', 'package.json', 'README.md'],
