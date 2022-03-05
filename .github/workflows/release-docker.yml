@@ -19,7 +19,7 @@ jobs:
     
     steps:
       - name: Get image name
-        run: echo "::set-output name=image_name::$DOCKER_HUB_LOGIN/$PREFIX_$(basename ${{ matrix.module }})\n"
+        run: echo "::set-output name=image_name::$DOCKER_HUB_LOGIN/$PREFIX_$(basename ${{ matrix.module }})"
         id: image_name
       
       - name: Login to DockerHub
