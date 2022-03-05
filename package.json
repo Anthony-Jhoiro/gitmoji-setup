@@ -1,15 +1,22 @@
 {
   "name": "gitmoji-sand",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "echo Hello World !",
+    "semantic-release": "semantic-release"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "semantic-release-gitmoji": "^1.4.4"
+    "semantic-release-gitmoji": "^1.4.4",
+    "semantic-release": "^19.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Anthony-Jhoiro/gitmoji-setup.git"
   }
 }
