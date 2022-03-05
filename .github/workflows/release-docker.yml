@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: ${{ matrix.module }}
+          context: ./${{ matrix.module }}
           tags: |
             ${{ steps.image_name.outputs.image_name }}:latest
             ${{ steps.image_name.outputs.image_name }}:${{ steps.image_name.outputs.tag_name }}
