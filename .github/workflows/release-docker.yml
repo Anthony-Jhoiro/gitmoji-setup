@@ -1,0 +1,38 @@
+name: Release
+
+env:
+  DOCKER_HUB_LOGIN: anthonyjhoiro
+  DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+  PREFIX: pref
+
+on:
+  release: created
+
+jobs:  
+  docker-release:
+    name: Docker deployment
+    runs-on: ubuntu-latest
+    needs: [release]
+    strategy:
+      matrix:
+        module: ['module1', 'module2']
+    
+    steps:
+      - name: Get image name
+        run: echo "::set-output name=image_name::$DOCKER_HUB_LOGIN/$PREFIX_$(basename ${{ matrix.module }})\n"
+        id: image_name
+      
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: anthonyjhoiro
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and push
+        use: docker/build-push-action@v2
+        with:
+          push: true
+          context: ${{ matrix.module }}
+          tags: |
+            ${{ steps.image_name.outputs.image_name }}:latest
+            ${{ steps.image_name.outputs.image_name }}:${GITHUB_REF##*/}
