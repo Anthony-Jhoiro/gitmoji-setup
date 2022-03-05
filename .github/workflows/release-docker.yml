@@ -5,13 +5,14 @@ env:
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
   PREFIX: pref
 
-on: release
+on: 
+  release:
+    types: [published]
 
 jobs:  
   docker-release:
     name: Docker deployment
     runs-on: ubuntu-latest
-    needs: [release]
     strategy:
       matrix:
         module: ['module1', 'module2']
