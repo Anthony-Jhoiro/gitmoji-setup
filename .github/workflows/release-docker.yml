@@ -35,4 +35,4 @@ jobs:
           context: ${{ matrix.module }}
           tags: |
             ${{ steps.image_name.outputs.image_name }}:latest
-            ${{ steps.image_name.outputs.image_name }}:${GITHUB_REF##*/}
+            ${{ steps.image_name.outputs.image_name }}:${{ env.GITHUB_REF##*/ }}
