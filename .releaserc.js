@@ -34,7 +34,8 @@ module.exports = {
                         ':iphone:',
                         ':pencil2:',
                         ':bento:',
-                        ':green_apple:'
+                        ':green_apple:',
+                        ':green_heart:'
                     ]
                 },
                 releaseNotes: {
