@@ -1,4 +1,4 @@
-name: Release
+name: Release Docker
 
 env:
   DOCKER_HUB_LOGIN: anthonyjhoiro
