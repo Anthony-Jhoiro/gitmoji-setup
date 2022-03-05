@@ -5,8 +5,7 @@ env:
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
   PREFIX: pref
 
-on:
-  release: created
+on: release
 
 jobs:  
   docker-release:
