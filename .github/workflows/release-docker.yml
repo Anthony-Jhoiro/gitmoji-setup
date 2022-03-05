@@ -18,6 +18,8 @@ jobs:
         module: ['module1', 'module2']
     
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Get image name and tag
         run: |
           echo "::set-output name=image_name::$DOCKER_HUB_LOGIN/$PREFIX_$(basename ${{ matrix.module }})"
